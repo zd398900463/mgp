@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}首页{% endblock title %}
+{% block css %}
+    <script src="{% static "echarts/echarts.min.js" %}"></script>
+{% endblock %}
+{% block content %}
+<!-- Area Chart Example-->
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-area-chart"></i> 舆情走势</div>
+  <div id="main" align=center style="width: 100%;height:600%;">
+  </div>
+        <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title: {
+        text: '情感趋势',
+        subtext: ''
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross'
+        }
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis:  {
+        type: 'category',
+        boundaryGap: false,
+        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
+    },
+    yAxis: {
+        type: 'value',
+        axisLabel: {
+            formatter: '{value} %'
+        },
+        axisPointer: {
+            snap: true
+        }
+    },
+    visualMap: {
+        show: false,
+        dimension: 0,
+        pieces: [{
+            lte: 6,
+            color: 'green'
+        }, {
+            gt: 6,
+            lte: 8,
+            color: 'red'
+        }, {
+            gt: 8,
+            lte: 14,
+            color: 'green'
+        }, {
+            gt: 14,
+            lte: 17,
+            color: 'red'
+        }, {
+            gt: 17,
+            color: 'green'
+        }]
+    },
+    series: [
+        {
+            name:'负面情感比',
+            type:'line',
+            smooth: true,
+            data: [25, 43, 63, 82, 77, 85, 73, 75, 72, 63, 53, 39, 40, 50, 60, 75, 80, 70, 50, 20],
+            markArea: {
+                data: [ [{
+                    name: '爆发期',
+                    xAxis: '03:45'
+                }, {
+                    xAxis: '08:45'
+                }], [{
+                    name: '衰退期',
+                    xAxis: '17:30'
+                }, {
+                    xAxis: '21:15'
+                }] ]
+            }
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+{% endblock %}
+{% block script %}
+    <script src="{% static "js/sb-admin-charts.min.js" %}"></script>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}首页{% endblock title %}
+{% block css %}
+    <script src="{% static "echarts/echarts.min.js" %}"></script>
+{% endblock %}
+{% block content %}
+<!-- Area Chart Example-->
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-pie-chart"></i> 媒体分布</div>
+  <div id="main" align=center style="width: 100%;height: 600%;">
+  </div>
+        <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title : {
+        text: '用户类型',
+        subtext: '',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        x : 'center',
+        y : 'bottom',
+        data:['官方认证','企业认证','微博达人','未认证','个人认证','媒体','机构']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'面积模式',
+            type:'pie',
+            radius : [30, 200],
+            center : ['50%', '50%'],
+            roseType : 'area',
+            data:[
+                {value:10, name:'官方认证'},
+                {value:5, name:'企业认证'},
+                {value:15, name:'微博达人'},
+                {value:25, name:'未认证'},
+                {value:20, name:'个人认证'},
+                {value:35, name:'媒体'},
+                {value:30, name:'机构'},
+            ]
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+{% endblock %}
+{% block script %}
+    <script src="{% static "js/sb-admin-charts.min.js" %}"></script>
+{% endblock %}

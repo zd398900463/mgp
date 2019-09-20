@@ -1,0 +1,158 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="{% url 'datamanager:npolist' %}">食品安全网络舆情分析系统</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+{#            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="信息配置">#}
+{#                <a class="nav-link" href="{% url 'datamanager:homepage' %}">#}
+{#                    <i class="fa fa-fw fa-server"></i>#}
+{#                    <span class="nav-link-text">信息配置</span>#}
+{#                </a>#}
+{#            </li>#}
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="舆情列表">
+                <a class="nav-link" href="{% url 'datamanager:npolist' %}">
+                    <i class="fa fa-fw fa-table"></i>
+                    <span class="nav-link-text">舆情列表</span>
+                </a>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="舆情统计">
+                <a class="nav-link" href="{% url 'datamanager:npochart' %}">
+                    <i class="fa fa-fw fa-bar-chart"></i>
+                    <span class="nav-link-text">舆情统计</span>
+                </a>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="内容分析">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#contentAnalyse" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-files-o"></i>
+                    <span class="nav-link-text">内容分析</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="contentAnalyse">
+                    <li>
+                        <a href="{% url 'datamanager:orgin' %}">数据来源</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:hotpoint' %}">热门主题</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:nposa' %}">情感分析</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:npoia' %}">舆情走势</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="微博分析">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#mediaAnalyse" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-weibo"></i>
+                    <span class="nav-link-text">微博分析</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="mediaAnalyse">
+                    <li>
+                        <a href="{% url 'datamanager:class' %}">用户类型</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:gender' %}">帐号性别</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:weibosentiment' %}">情感状态</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:paidposters' %}">水军比例</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:transport' %}">传播路径</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:npomap' %}">地域分布</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="分析助手">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#analysistool" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">分析助手</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="analysistool">
+                    <li>
+                        <a href="{% url 'datamanager:statistics' %}">词频统计</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:sentiment' %}">情感分析</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:themeclass' %}">主题归类</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:abstract' %}">摘要提取</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamanager:keyword' %}">关键词提取</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="用户中心">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-user-circle-o"></i>
+                    <span class="nav-link-text">用户中心</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a href="{% url 'userprofile:useredit' %}">修改信息</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'userprofile:pwdchange' %}">修改密码</a>
+                    </li>
+                </ul>
+            </li>
+            {% if user.is_superuser %}
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="数据管理">
+                <a class="nav-link" href="{% url 'datamanager:config' %}">
+                    <i class="fa fa-fw fa-cogs"></i>
+                    <span class="nav-link-text">数据管理</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>退出用户</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">是否退出此账户?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">点击 "退出" 选项后你将确定当前账户。</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                        <a class="btn btn-primary" href="{% url 'userprofile:userlogout' %}">确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>

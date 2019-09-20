@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}首页{% endblock title %}
+{% block css %}
+<!-- Page level plugin CSS-->
+  <link href="{% static "vendor/datatables/dataTables.bootstrap4.css" %}" rel="stylesheet">
+{% endblock css %}
+
+{% block content %}
+    <!-- Example DataTables Card-->
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fa fa-table"></i> 数据管理</div>
+      <div class="card-body">
+        <div class="table-responsive">
+         <table class="table text-nowrap table-hover table-bordered">
+{#          <caption>Optional table caption.</caption>#}
+          <thead>
+            <tr class="bg-primary" >
+              <th>站点</th>
+              <th width="45%">内容</th>
+              <th>URl</th>
+                <th width="5%" class="text-center">操作
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+            <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+            <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+           <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+           <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+           <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+           <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+           <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+           <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+           <tr>
+            <th>微博</th>
+              <th>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</th>
+              <th>m.weibo.cn</th>
+                <th >
+{#				<input type="checkbox" name="checkbox" value="checkOrCancelAll();" id="selectAll" />#}
+                 <button class="btn-info" onclick="opcheckboxed('checkbox', 'uncheckall')">删除</button class="btn-info">
+                 
+              </th>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+{% endblock content %}
+{% block script %}
+    <script src="{% static "vendor/datatables/jquery.dataTables.js" %}"></script>
+    <script src="{% static "vendor/datatables/dataTables.bootstrap4.js" %}"></script>
+    <script src="{% static "js/sb-admin-datatables.min.js" %}"></script>
+    <script>
+    function opcheckboxed(objName, type){
+  var objNameList=document.getElementsByName(objName);
+  if(null!=objNameList){
+    for(var i=0;i<objNameList.length;i++){
+      if(objNameList[i].checked==true)
+      {
+        if(type != 'checkall') {  // 非全选
+          objNameList[i].checked=false;
+        }
+
+      } else {
+        if(type != 'uncheckall') {  // 非取消全选
+          objNameList[i].checked=true;
+        }
+      }
+    }
+  }
+}
+
+</script>
+
+    </script>
+{% endblock script %}
+
+
+

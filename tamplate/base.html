@@ -1,0 +1,87 @@
+<!-- 载入静态文件 -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!-- 网站主语言 -->
+<html lang="zh-cn">
+
+<head>
+    <!--================== 网站采用的字符编码 ==================-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- 预留网站标题的位置 -->
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- ========================CSS========================== -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="{% static "vendor/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="{% static "css/sb-admin.css" %}" rel="stylesheet" >
+    {% block css %}{% endblock css %}
+</head>
+
+<body class="fixed-nav bg-dark" id="page-top">
+<!-- ========================== 引入导航栏 ===========================-->
+{% include 'header.html' %}
+
+<!--=========================== 主体内容 ===========================-->
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+{#        <ol class="breadcrumb">#}
+{#            <li class="breadcrumb-item">当前页面:#}
+{#                {% block nowpage %}{% endblock %}#}
+{#            </li>#}
+{#        </ol>#}
+        {% block content %}{% endblock content %}
+    </div>
+</div>
+
+<!--=========================== 引入注脚 ============================ -->
+{#{% include 'footer.html' %}#}
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+<script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{% static "vendor/jquery-easing/jquery.easing.min.js" %}"></script>
+<!-- Page level plugin JavaScript-->
+<script src="{% static "vendor/chart.js/Chart.min.js" %}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{% static "js/sb-admin.min.js" %}"></script>
+<!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
+<script src="{% static 'jquery/jquery.js' %}"></script>
+<script src="{% static 'popper/popper.js' %}"></script>
+<!-- Custom js -->
+<script src="{% static "js/script.js" %}"></script>
+<!-- 引入bootstrap的js文件 -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- 引入layer.js 依赖jquery -->
+<script src="{% static 'layer-v3.1.1/layer/layer.js' %}"></script>
+{% include 'back_to_top_func.html' %}
+{% block script %}{% endblock script %}
+
+<!-- 页脚沉底使用样式 -->
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    #wrapper {
+        min-height: 100%;
+        margin-bottom: -60px;
+    }
+
+    #footer,
+    #push {
+        height: 60px;
+    }
+</style>
+
+</body>
+</html>

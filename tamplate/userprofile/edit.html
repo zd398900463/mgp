@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}首页{% endblock title %}
+{% block css %}
+    <script src="{% static "echarts/echarts.min.js" %}"></script>
+{% endblock %}
+{% block content %}
+<!-- Area Chart Example-->
+<div id="show" class="card mb-3">
+  <div class="card-header">
+  <i class="fa fa-user-circle-o"></i> 修改信息</div>
+  <form action="" method="POST">
+  {% csrf_token %}
+    <div class="form-control">
+      <p>
+        <label class="text-right col-5" for="id_username">用户名:</label>
+        <input class="text-left" type="text" name="username" value="{{ user.username }}" maxlength="150" required id="id_username">
+        <!-- <span class="helptext">必填。150个字符或者更少。包含字母，数字和仅有的@/./+/-/_符号。</span> -->
+      </p>
+        {{ user_edit_form.errors.username }}
+      <p>
+        <label class="text-right col-5" for="id_email">电子邮件:</label>
+        <input class="text-left" type="email" name="email" value="{{ user.email }}" maxlength="254" id="id_email">
+      </p>
+        {{ user_edit_form.errors.email }}
+      <p>
+        <label class="text-right col-5" for="realname">姓名:</label>
+        <input type="text" name="realname" maxlength="50" id="id_realname" value="{{ user.Profile.realname }}">
+      </p>
+        {{ user_edit_form.errors.realname }}
+      <p>
+        <label class="text-right col-5" for="id_phone">电话:</label>
+        {{ user.Profile.phone }}
+        <input type="text" name="phone" id="id_phone" value="{{ user.Profile.phone }}">
+      </p>
+        {{ edit.errors.phone }}
+
+      <div class="user-my-btn-warp text-center">
+        <button class="btn btn-primary " type="submit">
+          <!---->
+          <!---->
+          <span>保存</span>
+        </button>
+      </div>
+          <br>
+    </div>
+  </form>
+</div>
+{% endblock %}
